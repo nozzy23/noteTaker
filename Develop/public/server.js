@@ -1,7 +1,7 @@
 var express = require("express");
 var path = require("path");
 var app = express();
-var PORT = process.env.PORT||3001;
+var PORT = process.env.PORT||3000;
 const fs = require("fs")
 
 
@@ -22,26 +22,21 @@ app.get("/", function(req, res) {
 
   app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "notes.html"));
-    
   });
 
 
 //display notes 
 
 app.get("/api/notes", function(req, res) {
-  return res.json(note);
+  return res.json(data);
 });
 
 //post
 app.post("/api/notes", function(req,res){
   let newNote= req.body;
 
-  newNote.routename = newNote.name.replace(/\s+/g, "").toLowerCase();
-  console.log(newNote);
-
-  note.push(newNote);
-
-  res.json(newNote);
+ data.push(newNote);
+ res.send("new Note")
 })
 
 
